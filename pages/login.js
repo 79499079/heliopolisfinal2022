@@ -1,14 +1,14 @@
 import Link from "next/link";
 import React, { useEffect } from "react";
-/* import { signIn, useSession } from "next-auth/react"; */
+import { signIn, useSession } from "next-auth/react";
 import { useForm } from "react-hook-form";
 import Layout from "../components/Layout";
-/* import { getError } from "../utils/error";
+import { getError } from "../utils/error";
 import { toast } from "react-toastify";
-import { useRouter } from "next/router"; */
+import { useRouter } from "next/router";
 
 export default function LoginScreen() {
-  /* const { data: session } = useSession();
+  const { data: session } = useSession();
 
   const router = useRouter();
   const { redirect } = router.query;
@@ -17,7 +17,7 @@ export default function LoginScreen() {
     if (session?.user) {
       router.push(redirect || "/");
     }
-  }, [router, session, redirect]); */
+  }, [router, session, redirect]);
 
   const {
     handleSubmit,
@@ -25,8 +25,7 @@ export default function LoginScreen() {
     formState: { errors },
   } = useForm();
   const submitHandler = async ({ email, password }) => {
-    console.log(email, password);
-    /* try {
+    try {
       const result = await signIn("credentials", {
         redirect: false,
         email,
@@ -37,7 +36,7 @@ export default function LoginScreen() {
       }
     } catch (err) {
       toast.error(getError(err));
-    } */
+    }
   };
   return (
     <Layout title="Login">
