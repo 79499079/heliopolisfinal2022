@@ -45,7 +45,7 @@ export default function Layout({ children, title }) {
             <div>
               <Link href="/cart">
                 <a className="p-2">
-                  Cart
+                  Carro
                   {cartItemsCount > 0 && (
                     <span className="ml-1 rounded-full bg-red-600 px-2 py-1 text-xs font-bold text-white">
                       {cartItemsCount}
