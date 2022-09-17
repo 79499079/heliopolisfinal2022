@@ -7,8 +7,8 @@ export default function ProductItem({ product }) {
       <Link href={`/product/${product.slug}`}>
         <a>
           <img
-            src={product.image}
-            alt={product.name}
+            src={product.imagen}
+            alt={product.nombre}
             className="rounded shadow"
           />
         </a>
@@ -16,11 +16,11 @@ export default function ProductItem({ product }) {
       <div className="flex flex-col items-center justify-center  p-5">
         <Link href={`/product/${product.slug}`}>
           <a>
-            <h2 className="text-lg">{product.name}</h2>
+            <h2 className="text-lg">{product.nombre}</h2>
           </a>
         </Link>
-        <p className="mb-2">{product.brand}</p>
-        <p>{product.price}</p>
+        <p className="mb-2">{product.categoria}</p>
+        <p>{product.precioventa}</p>
         <button className="primary-button" type="button">
           Adicionar carrito
         </button>

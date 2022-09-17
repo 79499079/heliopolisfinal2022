@@ -27,6 +27,9 @@ function CartScreen() {
     dispatch({ type: "CART_ADD_ITEM", payload: { ...item, quantity } });
     /* toast.success("Product updated in the cart"); */
   };
+  const myLoader = ({ src }) => {
+    return `https://res.cloudinary.com/ultranatural/image/upload/${src}}`;
+  };
   return (
     <Layout title="Carrito de Compras">
       <h1 className="mb-4 text-xl">Carro de Compras</h1>
@@ -53,13 +56,13 @@ function CartScreen() {
                       <Link href={`/product/${item.slug}`}>
                         <a className="flex items-center">
                           <Image
-                            src={item.image}
-                            alt={item.name}
+                            src={myLoader}
+                            alt={item.nombre}
                             width={50}
                             height={50}
                           ></Image>
                           &nbsp;
-                          {item.name}
+                          {item.nombre}
                         </a>
                       </Link>
                     </td>
@@ -70,14 +73,14 @@ function CartScreen() {
                           updateCartHandler(item, e.target.value)
                         }
                       >
-                        {[...Array(item.countInStock).keys()].map((x) => (
+                        {[...Array(item.cantidad).keys()].map((x) => (
                           <option key={x + 1} value={x + 1}>
                             {x + 1}
                           </option>
                         ))}
                       </select>
                     </td>
-                    <td className="p-5 text-right">{item.price}</td>
+                    <td className="p-5 text-right">{item.precioventa}</td>
                     <td className="p-5 text-center">
                       <button onClick={() => removeItemHandler(item)}>
                         <XCircleIcon className="h-5 w-5"></XCircleIcon>
@@ -100,7 +103,10 @@ function CartScreen() {
               <li>
                 <div className="pb-3 text-xl">
                   Subtotal ({cartItems.reduce((a, c) => a + c.quantity, 0)}) : $
-                  {cartItems.reduce((a, c) => a + c.quantity * c.price, 0)}
+                  {cartItems.reduce(
+                    (a, c) => a + c.quantity * c.precioventa,
+                    0
+                  )}
                 </div>
               </li>
               <li>
