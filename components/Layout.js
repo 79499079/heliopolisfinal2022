@@ -43,7 +43,7 @@ export default function Layout({ title, children }) {
             <div>
               <Link href="/cart">
                 <a className="p-2">
-                  Cart
+                  Carrito
                   {cartItemsCount > 0 && (
                     <span className="ml-1 rounded-full bg-red-600 px-2 py-1 text-xs font-bold text-white">
                       {cartItemsCount}
@@ -62,7 +62,7 @@ export default function Layout({ title, children }) {
                   <Menu.Items className="absolute right-0 w-56 origin-top-right bg-white  shadow-lg ">
                     <Menu.Item>
                       <DropdownLink className="dropdown-link" href="/profile">
-                        Profile
+                        Perfil
                       </DropdownLink>
                     </Menu.Item>
                     <Menu.Item>
@@ -89,7 +89,7 @@ export default function Layout({ title, children }) {
                         href="#"
                         onClick={logoutClickHandler}
                       >
-                        Logout
+                        Salir
                       </a>
                     </Menu.Item>
                   </Menu.Items>
