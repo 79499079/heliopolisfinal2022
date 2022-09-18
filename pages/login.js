@@ -50,7 +50,7 @@ export default function LoginScreen() {
           <input
             type="email"
             {...register("email", {
-              required: "Por favor ingrese su Email",
+              required: "Please enter email",
               pattern: {
                 value: /^[a-zA-Z0-9_.+-]+@[a-zA-Z0-9-]+.[a-zA-Z0-9-.]+$/i,
                 message: "Please enter valid email",
@@ -70,13 +70,11 @@ export default function LoginScreen() {
             type="password"
             {...register("password", {
               required: "Please enter password",
-              minLength: {
-                value: 6,
-                message: "password requiere más de 5 caracteres",
-              },
+              minLength: { value: 6, message: "password is more than 5 chars" },
             })}
             className="w-full"
             id="password"
+            autoFocus
           ></input>
           {errors.password && (
             <div className="text-red-500 ">{errors.password.message}</div>
@@ -86,8 +84,8 @@ export default function LoginScreen() {
           <button className="primary-button">Login</button>
         </div>
         <div className="mb-4 ">
-          No tienes una cuenta? &nbsp;
-          {/* <Link href={`/register?redirect=${redirect || "/"}`}>Register</Link> */}
+          Don&apos;t have an account? &nbsp;
+          <Link href={`/register?redirect=${redirect || "/"}`}>Register</Link>
         </div>
       </form>
     </Layout>
