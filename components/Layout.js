@@ -27,8 +27,9 @@ export default function Layout({ title, children }) {
   return (
     <>
       <Head>
-        <title>{title ? title + " - Heliopolis" : "Heliopolis"}</title>
-        <html lang="es" />
+        <title lang="es">
+          {title ? title + " - Heliopolis" : "Heliopolis"}
+        </title>
         <meta name="description" content="Venta de Productos Naturales" />
         <link rel="icon" href="/favicon.ico" />
       </Head>
