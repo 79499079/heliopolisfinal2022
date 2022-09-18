@@ -9,5 +9,4 @@ const nextConfig = {
     defaultLocale: "es",
   },
 };
-
 module.exports = nextConfig;
