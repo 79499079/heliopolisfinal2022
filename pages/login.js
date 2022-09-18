@@ -74,7 +74,6 @@ export default function LoginScreen() {
             })}
             className="w-full"
             id="password"
-            autoFocus
           ></input>
           {errors.password && (
             <div className="text-red-500 ">{errors.password.message}</div>
