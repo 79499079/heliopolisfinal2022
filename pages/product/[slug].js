@@ -14,7 +14,7 @@ export default function ProductScreen(props) {
   const { state, dispatch } = useContext(Store);
   const router = useRouter();
   if (!product) {
-    return <Layout title="Produt Not Found">Produt Not Found</Layout>;
+    return <Layout title="Producto no existe">Producto no existe</Layout>;
   }
 
   const addToCartHandler = async () => {
@@ -23,7 +23,7 @@ export default function ProductScreen(props) {
     const { data } = await axios.get(`/api/products/${product._id}`);
 
     if (data.cantidad < quantity) {
-      return toast.error("Sorry. Product is out of stock");
+      return toast.error("Upsss. Producto agotado");
     }
 
     dispatch({ type: "CART_ADD_ITEM", payload: { ...product, quantity } });
@@ -66,7 +66,7 @@ export default function ProductScreen(props) {
             </div>
             <div className="mb-2 flex justify-between">
               <div>Status</div>
-              <div>{product.cantidad > 0 ? "In stock" : "Unavailable"}</div>
+              <div>{product.cantidad > 0 ? "con Stock" : "agotado"}</div>
             </div>
             <button
               className="primary-button w-full"

@@ -22,14 +22,14 @@ function CartScreen() {
     const quantity = Number(qty);
     const { data } = await axios.get(`/api/products/${item._id}`);
     if (data.countInStock < quantity) {
-      return toast.error("Sorry. Product is out of stock");
+      return toast.error("Upsss. Producto agotado");
     }
     dispatch({ type: "CART_ADD_ITEM", payload: { ...item, quantity } });
-    toast.success("Product updated in the cart");
+    toast.success("Producto actualizado en el carrito");
   };
   return (
-    <Layout title="Shopping Cart">
-      <h1 className="mb-4 text-xl">Shopping Cart</h1>
+    <Layout title="Carrito Compras">
+      <h1 className="mb-4 text-xl text-center font-bold">Carrito de Compras</h1>
       {cartItems.length === 0 ? (
         <div>
           Cart is empty. <Link href="/">Go shopping</Link>

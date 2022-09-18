@@ -39,7 +39,7 @@ export default function PaymentScreen() {
   }, [paymentMethod, router, shippingAddress.address]);
 
   return (
-    <Layout title="Mètodo de Pago">
+    <Layout title="Método de Pago">
       <CheckoutWizard activeStep={2} />
       <form className="mx-auto max-w-screen-md" onSubmit={submitHandler}>
         <h1 className="mb-4 text-xl">Payment Method</h1>

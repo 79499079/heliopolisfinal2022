@@ -58,7 +58,7 @@ export default function ShippingScreen() {
       >
         <h1 className="mb-4 text-xl">Shipping Address</h1>
         <div className="mb-4">
-          <label htmlFor="fullName">Full Name</label>
+          <label htmlFor="fullName">Nombre Completo</label>
           <input
             className="w-full"
             id="fullName"
@@ -72,7 +72,7 @@ export default function ShippingScreen() {
           )}
         </div>
         <div className="mb-4">
-          <label htmlFor="address">Address</label>
+          <label htmlFor="address">Dirección</label>
           <input
             className="w-full"
             id="address"
@@ -86,7 +86,7 @@ export default function ShippingScreen() {
           )}
         </div>
         <div className="mb-4">
-          <label htmlFor="city">City</label>
+          <label htmlFor="city">Ciudad</label>
           <input
             className="w-full"
             id="city"
@@ -99,7 +99,7 @@ export default function ShippingScreen() {
           )}
         </div>
         <div className="mb-4">
-          <label htmlFor="postalCode">Postal Code</label>
+          <label htmlFor="postalCode">Código Postal</label>
           <input
             className="w-full"
             id="postalCode"
@@ -112,7 +112,7 @@ export default function ShippingScreen() {
           )}
         </div>
         <div className="mb-4">
-          <label htmlFor="country">Country</label>
+          <label htmlFor="country">País</label>
           <input
             className="w-full"
             id="country"

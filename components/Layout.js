@@ -28,7 +28,7 @@ export default function Layout({ title, children }) {
     <>
       <Head>
         <title>{title ? title + " - Amazona" : "Amazona"}</title>
-        <meta name="description" content="Ecommerce Website" />
+        <meta name="description" content="Venta de Productos Naturales" />
         <link rel="icon" href="/favicon.ico" />
       </Head>
 
