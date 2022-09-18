@@ -1,7 +1,9 @@
+import axios from "axios";
 import Image from "next/image";
 import Link from "next/link";
 import { useRouter } from "next/router";
 import React, { useContext } from "react";
+import { toast } from "react-toastify";
 import Layout from "../../components/Layout";
 import Product from "../../models/Product";
 import db from "../../utils/db";
@@ -12,62 +14,54 @@ export default function ProductScreen(props) {
   const { state, dispatch } = useContext(Store);
   const router = useRouter();
   if (!product) {
-    return <div>Producto no existe</div>;
+    return <Layout title="Produt Not Found">Produt Not Found</Layout>;
   }
+
   const addToCartHandler = async () => {
     const existItem = state.cart.cartItems.find((x) => x.slug === product.slug);
     const quantity = existItem ? existItem.quantity + 1 : 1;
-    /*  const { data } = await axios.get(`/api/products/${product._id}`); */
+    const { data } = await axios.get(`/api/products/${product._id}`);
 
-    /* if (data.countInStock < quantity) {
+    if (data.cantidad < quantity) {
       return toast.error("Sorry. Product is out of stock");
-    }  */
-
-    if (product.countInStock < quantity) {
-      alert("Upsss. Producto agotado");
-      return;
     }
 
     dispatch({ type: "CART_ADD_ITEM", payload: { ...product, quantity } });
     router.push("/cart");
   };
 
-  const myLoader = ({ src }) => {
-    return `https://res.cloudinary.com/ultranatural/image/upload/${src}}`;
-  };
-
   return (
     <Layout title={product.nombre}>
       <div className="py-2">
-        <Link href="/">Regresar a Productos</Link>
+        <Link href="/">back to products</Link>
       </div>
       <div className="grid md:grid-cols-4 md:gap-3">
         <div className="md:col-span-2">
           <Image
-            src={myLoader}
+            src={product.imagen}
             alt={product.nombre}
             width={640}
             height={640}
             layout="responsive"
-          />
+          ></Image>
         </div>
         <div>
           <ul>
             <li>
               <h1 className="text-lg">{product.nombre}</h1>
             </li>
-            <li>Categoria: {product.categoria}</li>
-            <li>Proveedor: {product.proveedor}</li>
+            <li>Category: {product.categoria}</li>
+            <li>Brand: {product.marca}</li>
             <li>
               {product.rating} of {product.numReviews} reviews
             </li>
-            <li>Descripcion: {product.descripcion}</li>
+            <li>Description: {product.descripcion}</li>
           </ul>
         </div>
         <div>
           <div className="card p-5">
             <div className="mb-2 flex justify-between">
-              <div>Precio</div>
+              <div>Price</div>
               <div>${product.precioventa}</div>
             </div>
             <div className="mb-2 flex justify-between">
@@ -78,7 +72,7 @@ export default function ProductScreen(props) {
               className="primary-button w-full"
               onClick={addToCartHandler}
             >
-              Adiciona carrito
+              Add to cart
             </button>
           </div>
         </div>

@@ -6,8 +6,8 @@ import Layout from "../components/Layout";
 import { Store } from "../utils/Store";
 import { useRouter } from "next/router";
 import dynamic from "next/dynamic";
-/* import axios from "axios"; */
-/* import { toast } from "react-toastify"; */
+import axios from "axios";
+import { toast } from "react-toastify";
 
 function CartScreen() {
   const router = useRouter();
@@ -20,22 +20,19 @@ function CartScreen() {
   };
   const updateCartHandler = async (item, qty) => {
     const quantity = Number(qty);
-    /* const { data } = await axios.get(`/api/products/${item._id}`); */
-    /* if (data.countInStock < quantity) {
+    const { data } = await axios.get(`/api/products/${item._id}`);
+    if (data.countInStock < quantity) {
       return toast.error("Sorry. Product is out of stock");
-    } */
+    }
     dispatch({ type: "CART_ADD_ITEM", payload: { ...item, quantity } });
-    /* toast.success("Product updated in the cart"); */
-  };
-  const myLoader = ({ src }) => {
-    return `https://res.cloudinary.com/ultranatural/image/upload/${src}}`;
+    toast.success("Product updated in the cart");
   };
   return (
-    <Layout title="Carrito de Compras">
-      <h1 className="mb-4 text-xl">Carro de Compras</h1>
+    <Layout title="Shopping Cart">
+      <h1 className="mb-4 text-xl">Shopping Cart</h1>
       {cartItems.length === 0 ? (
         <div>
-          Carro esta vacio. <Link href="/">ir a Tienda</Link>
+          Cart is empty. <Link href="/">Go shopping</Link>
         </div>
       ) : (
         <div className="grid md:grid-cols-4 md:gap-5">
@@ -56,7 +53,7 @@ function CartScreen() {
                       <Link href={`/product/${item.slug}`}>
                         <a className="flex items-center">
                           <Image
-                            src={myLoader}
+                            src={item.imagen}
                             alt={item.nombre}
                             width={50}
                             height={50}
@@ -80,19 +77,12 @@ function CartScreen() {
                         ))}
                       </select>
                     </td>
-                    <td className="p-5 text-right">{item.precioventa}</td>
+                    <td className="p-5 text-right">${item.precioventa}</td>
                     <td className="p-5 text-center">
                       <button onClick={() => removeItemHandler(item)}>
                         <XCircleIcon className="h-5 w-5"></XCircleIcon>
                       </button>
                     </td>
-                    {/* 
-                    <td className="p-5 text-right">${item.price}</td>
-                    <td className="p-5 text-center">
-                      <button onClick={() => removeItemHandler(item)}>
-                        <XCircleIcon className="h-5 w-5"></XCircleIcon>
-                      </button>
-                    </td> */}
                   </tr>
                 ))}
               </tbody>
