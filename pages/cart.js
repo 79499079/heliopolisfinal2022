@@ -32,7 +32,7 @@ function CartScreen() {
       <h1 className="mb-4 text-xl text-center font-bold">Carrito de Compras</h1>
       {cartItems.length === 0 ? (
         <div>
-          Carrito vacio. <Link href="/">Ir a la Tienda</Link>
+          Carrito vacio. <Link href="/">Ir a Productos</Link>
         </div>
       ) : (
         <div className="grid md:grid-cols-4 md:gap-5">
@@ -77,7 +77,9 @@ function CartScreen() {
                         ))}
                       </select>
                     </td>
-                    <td className="p-5 text-right">${item.precioventa}</td>
+                    <td className="p-5 text-right">
+                      ${new Intl.NumberFormat("de-DE").format(item.precioventa)}
+                    </td>
                     <td className="p-5 text-center">
                       <button onClick={() => removeItemHandler(item)}>
                         <XCircleIcon className="h-5 w-5"></XCircleIcon>
@@ -93,9 +95,11 @@ function CartScreen() {
               <li>
                 <div className="pb-3 text-xl">
                   Subtotal ({cartItems.reduce((a, c) => a + c.quantity, 0)}) : $
-                  {cartItems.reduce(
-                    (a, c) => a + c.quantity * c.precioventa,
-                    0
+                  {new Intl.NumberFormat("de-DE").format(
+                    cartItems.reduce(
+                      (a, c) => a + c.quantity * c.precioventa,
+                      0
+                    )
                   )}
                 </div>
               </li>

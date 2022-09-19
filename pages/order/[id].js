@@ -232,9 +232,17 @@ function OrderScreen() {
                         </Link>
                       </td>
                       <td className=" p-5 text-right">{item.quantity}</td>
-                      <td className="p-5 text-right">${item.precioventa}</td>
                       <td className="p-5 text-right">
-                        ${item.quantity * item.precioventa}
+                        $
+                        {new Intl.NumberFormat("de-DE").format(
+                          item.precioventa
+                        )}
+                      </td>
+                      <td className="p-5 text-right">
+                        $
+                        {new Intl.NumberFormat("de-DE").format(
+                          item.quantity * item.precioventa
+                        )}
                       </td>
                     </tr>
                   ))}
@@ -251,25 +259,33 @@ function OrderScreen() {
                 <li>
                   <div className="mb-2 flex justify-between">
                     <div>Items</div>
-                    <div>${itemsPrice}</div>
+                    <div>
+                      ${new Intl.NumberFormat("de-DE").format(itemsPrice)}
+                    </div>
                   </div>
                 </li>{" "}
                 <li>
                   <div className="mb-2 flex justify-between">
                     <div>IVA</div>
-                    <div>${taxPrice}</div>
+                    <div>
+                      ${new Intl.NumberFormat("de-DE").format(taxPrice)}
+                    </div>
                   </div>
                 </li>
                 <li>
                   <div className="mb-2 flex justify-between">
                     <div>Envio</div>
-                    <div>${shippingPrice}</div>
+                    <div>
+                      ${new Intl.NumberFormat("de-DE").format(shippingPrice)}
+                    </div>
                   </div>
                 </li>
                 <li>
                   <div className="mb-2 flex justify-between">
                     <div>Total</div>
-                    <div>${totalPrice}</div>
+                    <div>
+                      ${new Intl.NumberFormat("de-DE").format(totalPrice)}
+                    </div>
                   </div>
                 </li>
                 {/* {!isPaid && (

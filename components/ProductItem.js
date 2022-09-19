@@ -20,7 +20,7 @@ export default function ProductItem({ product, addToCartHandler }) {
           </a>
         </Link>
         <p className="mb-2">{product.categoria}</p>
-        <p>${product.precioventa}</p>
+        <p>${new Intl.NumberFormat("de-DE").format(product.precioventa)}</p>
         <button
           className="primary-button"
           type="button"
