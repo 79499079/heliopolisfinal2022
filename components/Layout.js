@@ -55,17 +55,14 @@ export default function Layout({ title, children }) {
               {status === "loading" ? (
                 "Loading"
               ) : session?.user ? (
-                session.user.name
-              ) : (
-                /*{
-                   <Menu as="div" className="relative inline-block">
+                <Menu as="div" className="relative inline-block">
                   <Menu.Button className="text-blue-600">
-                    {session.user.nombre}
+                    {session.user.name}
                   </Menu.Button>
-                  <Menu.Items className="absolute right-0 w-56 origin-top-right bg-white  shadow-lg ">
+                  <Menu.Items className="absolute right-0 w-56 origin-top-right bg-white shadow-lg ">
                     <Menu.Item>
                       <DropdownLink className="dropdown-link" href="/profile">
-                        Profile
+                        Perfil
                       </DropdownLink>
                     </Menu.Item>
                     <Menu.Item>
@@ -73,7 +70,7 @@ export default function Layout({ title, children }) {
                         className="dropdown-link"
                         href="/order-history"
                       >
-                        Order History
+                        Historial de Ordenes
                       </DropdownLink>
                     </Menu.Item>
                     {session.user.isAdmin && (
@@ -92,12 +89,12 @@ export default function Layout({ title, children }) {
                         href="#"
                         onClick={logoutClickHandler}
                       >
-                        Logout
+                        Salir
                       </a>
                     </Menu.Item>
                   </Menu.Items>
-                </Menu> 
-                }*/
+                </Menu>
+              ) : (
                 <Link href="/login">
                   <a className="p-2">Login</a>
                 </Link>

@@ -50,13 +50,15 @@ export default function ShippingScreen() {
   };
 
   return (
-    <Layout title="Shipping Address">
+    <Layout title="Dirección de Envio">
       <CheckoutWizard activeStep={1} />
       <form
         className="mx-auto max-w-screen-md"
         onSubmit={handleSubmit(submitHandler)}
       >
-        <h1 className="mb-4 text-xl">Shipping Address</h1>
+        <h1 className="mb-4 text-xl text-center font-bold">
+          Dirección de Envio
+        </h1>
         <div className="mb-4">
           <label htmlFor="fullName">Nombre Completo</label>
           <input

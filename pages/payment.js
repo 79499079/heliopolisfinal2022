@@ -42,7 +42,7 @@ export default function PaymentScreen() {
     <Layout title="Método de Pago">
       <CheckoutWizard activeStep={2} />
       <form className="mx-auto max-w-screen-md" onSubmit={submitHandler}>
-        <h1 className="mb-4 text-xl">Payment Method</h1>
+        <h1 className="mb-4 text-xl text-center font-bold">Método de Pago</h1>
         {["Epayco", "Contraentrega"].map((payment) => (
           <div key={payment} className="mb-4">
             <input
@@ -63,7 +63,7 @@ export default function PaymentScreen() {
           <button
             onClick={() => router.push("/shipping")}
             type="button"
-            className="default-button"
+            className="primary-button"
           >
             Regresar
           </button>
