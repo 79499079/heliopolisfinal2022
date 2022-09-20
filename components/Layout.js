@@ -96,7 +96,7 @@ export default function Layout({ title, children }) {
                 </Menu>
               ) : (
                 <Link href="/login">
-                  <a className="p-2">Login</a>
+                  <a className="p-2">Sesión</a>
                 </Link>
               )}
             </div>
