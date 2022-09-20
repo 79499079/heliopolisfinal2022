@@ -39,6 +39,7 @@ export default NextAuth({
         }
         throw new Error("Email or password son invalidos");
       },
+      secret: process.env.NEXTAUTH_SECRET,
     }),
   ],
 });
